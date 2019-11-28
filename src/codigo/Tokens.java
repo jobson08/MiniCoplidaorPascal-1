@@ -40,6 +40,11 @@ public enum Tokens {
     Ponto,
     P_virgula,
     Atribuicao,
+    Maior,
+    Menor,
+    Maior_Ingual,
+    Menor_Ingual,
+    Diferente,
     Identificador,
     Numero,
     ERROR

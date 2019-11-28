@@ -105,9 +105,21 @@ public class FormPrincipal extends javax.swing.JFrame {
                 case Divisao:
                     resultado += "  <Operador division>\t" + lexer.lexeme + "\n";
                     break;
-                case Op_relacionais:
-                    resultado += "  <Operador Relacionais>\t" + lexer.lexeme + "\n";
+                case Maior:
+                    resultado += "  <Maior>\t" + lexer.lexeme + "\n";
                     break;
+                case Menor:
+                    resultado += "  <Menor>\t" + lexer.lexeme + "\n";
+                    break;
+                case Maior_Ingual:
+                    resultado += "  <Maior Ingual>\t" + lexer.lexeme + "\n";
+                    break;
+                case Menor_Ingual:
+                    resultado += "  <Menor Ingual>\t" + lexer.lexeme + "\n";
+                    break;
+                case Diferente:
+                    resultado += "  <Diferente>\t" + lexer.lexeme + "\n";
+                    break;    
                 case Op_booleano:
                     resultado += "  <Operador booleano>\t" + lexer.lexeme + "\n";
                     break;

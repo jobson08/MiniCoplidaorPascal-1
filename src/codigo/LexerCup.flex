@@ -95,8 +95,21 @@ or {lexeme=yytext(); return Or;}
 /* Operador Divisao */
 "/" {lexeme=yytext(); return Divisao;}
 
-/*Operadores Relacionais */
-( "=" | ">" | "<" | ">=" | "<=" | "<>" ) {lexeme = yytext(); return Op_relacionais;}
+/* Operador Maior */
+">" {lexeme=yytext(); return Maior;}
+
+/* Operador Menor */
+"<" {lexeme=yytext(); return Menor;}
+
+/* Operador Maior Ingual */
+">=" {lexeme=yytext(); return Maior_Ingual;}
+
+/* Operador Menor Ingual */
+"<=" {lexeme=yytext(); return Menor_Ingual;}
+
+/* Operador Diferente */
+"<>" {lexeme=yytext(); return Diferente;}
+
 
 /*Operadores Booleanos*/
 (or | and)      {lexeme = yytext(); return Op_booleano;}
