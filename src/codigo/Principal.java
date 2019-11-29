@@ -17,18 +17,18 @@ import java.nio.file.Paths;
  */
 public class Principal {
     public static void main(String[] args) throws Exception {
-        String ruta1 = "C:/Users/jamme/OneDrive/Documentos/NetBeansProjects/MiniCopiladroPascal/src/codigo/Lexer.flex";
-        String ruta2 = "C:/Users/jamme/OneDrive/Documentos/NetBeansProjects/MiniCopiladroPascal/src/codigo/LexerCup.flex";
-        String[] rutaS = {"-parser", "Sintax", "C:/Users/jamme/OneDrive/Documentos/NetBeansProjects/MiniCopiladroPascal/src/codigo/Sintax.cup"};
-        generar(ruta1, ruta2, rutaS);
+        String rota1 = "C:/Users/jamme/OneDrive/Documentos/NetBeansProjects/MiniCopiladroPascal/src/codigo/Lexer.flex";
+        String rota2 = "C:/Users/jamme/OneDrive/Documentos/NetBeansProjects/MiniCopiladroPascal/src/codigo/LexerCup.flex";
+        String[] rotaS = {"-parser", "Sintax", "C:/Users/jamme/OneDrive/Documentos/NetBeansProjects/MiniCopiladroPascal/src/codigo/Sintax.cup"};
+        generar(rota1, rota2, rotaS);
     }
-    public static void generar(String ruta1, String ruta2, String[] rutaS) throws IOException, Exception{
+    public static void generar(String rota1, String rota2, String[] rotaS) throws IOException, Exception{
         File archivo;
-        archivo = new File(ruta1);
+        archivo = new File(rota1);
         JFlex.Main.generate(archivo);
-        archivo = new File(ruta2);
+        archivo = new File(rota2);
         JFlex.Main.generate(archivo);
-        java_cup.Main.main(rutaS);
+        java_cup.Main.main(rotaS);
         
         Path rutaSym = Paths.get("C:/Users/jamme/OneDrive/Documentos/NetBeansProjects/MiniCopiladroPascal/src/codigo/sym.java");
         if (Files.exists(rutaSym)) {
