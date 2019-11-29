@@ -38,7 +38,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         
         String expr = (String) txtEntrada.getText();
         Lexer lexer = new Lexer(new StringReader(expr));
-        String resultado = "LINHA " + cont + "\t\tSIMBOLO\n";
+        String resultado = "LINHA " + cont + "\t\t\t\tSIMBOLO\n";
         while (true) {
             Tokens token = lexer.yylex();
             if (token == null) {
@@ -390,7 +390,7 @@ public class FormPrincipal extends javax.swing.JFrame {
             TxtResutSintatico.setForeground(new Color(25, 111, 61));
         } catch (Exception ex) {
             Symbol sym = s.getS();
-            TxtResutSintatico.setText("Error de sintaxis. Linea: " + (sym.right + 1) + " Columna: " + (sym.left + 1) + ", Texto: \"" + sym.value + "\"");
+            TxtResutSintatico.setText("Error de sintaxis. Na Linha: " + (sym.right + 1) + " Coluna: " + (sym.left + 1) + ", Texto: \"" + sym.value + "\"");
             TxtResutSintatico.setForeground(Color.red);
         }
     }//GEN-LAST:event_BtnAnalizarSintaticoActionPerformed

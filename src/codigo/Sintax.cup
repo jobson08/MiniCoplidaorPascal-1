@@ -24,8 +24,8 @@ non terminal INICIO, SENTENCIA, DECLARACION;
 
 start with INICIO;
 
-INICIO ::= 
-    Begin  SENTENCIA End
+INICIO ::= Program Identificador P_virgula Begin SENTENCIA End P_virgula |
+    Begin SENTENCIA End P_virgula
 ;
-SENTENCIA ::= Begin Identificador End | Begin Identificador Igual Numero End
+SENTENCIA ::= T_dado Atribuicao Identificador P_virgula | T_dado Identificador Atribuicao Numero P_virgula
 ;
