@@ -21,11 +21,9 @@ espaco=[ ,\t,\r]+
 "\n" {return Linha;}
 
 /* Tipos de dados */
+( integer | real ) {lexeme=yytext(); return  T_dado;}
+
 int  {lexeme=yytext(); return Int;}
-
-integer  {lexeme=yytext(); return Integer;}
-
-real  {lexeme=yytext(); return Real;}
 
 string  {lexeme=yytext(); return String;}
 
@@ -102,7 +100,7 @@ program  {lexeme=yytext(); return Program;}
 "<>" {lexeme=yytext(); return Diferente;}
 
 /*Operadores Booleanos*/
-or | and  {lexeme = yytext(); return Op_booleano;}
+/*(or | and ) {lexeme=yytext(); return Op_booleano;}*/
 
 /* Parentesis de abertura */
 "("  {lexeme=yytext(); return Parentesis_abertura;}

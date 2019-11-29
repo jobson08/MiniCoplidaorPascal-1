@@ -5,6 +5,7 @@
  */
 package codigo;
 
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -16,6 +17,7 @@ import java.io.StringReader;
 import java.nio.file.Files;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java_cup.runtime.Symbol;
 import javax.swing.JFileChooser;
 
 /**
@@ -120,9 +122,9 @@ public class FormPrincipal extends javax.swing.JFrame {
                 case Diferente:
                     resultado += "  <Diferente>\t" + lexer.lexeme + "\n";
                     break;    
-                case Op_booleano:
+               /* case Op_booleano:
                     resultado += "  <Operador booleano>\t" + lexer.lexeme + "\n";
-                    break;
+                    break;*/
                 case Parentesis_abertura:
                     resultado += "  <Parentesis de abertura>\t" + lexer.lexeme + "\n";
                     break;
@@ -130,7 +132,7 @@ public class FormPrincipal extends javax.swing.JFrame {
                     resultado += "  <Parentesis de fecamento>\t" + lexer.lexeme + "\n";
                     break;
                 case Ponto:
-                    resultado += "  <Llave de apertura>\t" + lexer.lexeme + "\n";
+                    resultado += "  <Ponto>\t" + lexer.lexeme + "\n";
                     break;
                 case P_virgula:
                     resultado += "  <Ponto e virgula>\t" + lexer.lexeme + "\n";
@@ -379,6 +381,18 @@ public class FormPrincipal extends javax.swing.JFrame {
 
     private void BtnAnalizarSintaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAnalizarSintaticoActionPerformed
         // TODO add your handling code here:
+        String ST = txtEntrada.getText();
+        Sintax s = new Sintax(new codigo.LexerCup(new StringReader(ST)));
+        
+        try {
+            s.parse();
+            TxtResutSintatico.setText("Analisis realizado correctamente");
+            TxtResutSintatico.setForeground(new Color(25, 111, 61));
+        } catch (Exception ex) {
+            Symbol sym = s.getS();
+            TxtResutSintatico.setText("Error de sintaxis. Linea: " + (sym.right + 1) + " Columna: " + (sym.left + 1) + ", Texto: \"" + sym.value + "\"");
+            TxtResutSintatico.setForeground(Color.red);
+        }
     }//GEN-LAST:event_BtnAnalizarSintaticoActionPerformed
 
     /**

@@ -5,135 +5,135 @@ import java_cup.runtime.Symbol;
 %type java_cup.runtime.Symbol
 %cup
 %full
+%line
 %char
 L=[a-zA-Z_]+
 D=[0-9]+
-espaco=[ ,\t,\r,\n]+
+espacio=[ ,\t,\r,\n]+
 %{
-    private Symbol symbol (int type, object valor){
-        return new Symbol (type, yyline, yycolumn, valor);
-     }
-  private Symbol symbol (int type){
-        return new Symbol (type, yyline, yycolumn);
-     }
-
+    private Symbol symbol(int type, Object value){
+        return new Symbol(type, yyline, yycolumn, value);
+    }
+    private Symbol symbol(int type){
+        return new Symbol(type, yyline, yycolumn);
+    }
 %}
 %%
 
-/* Espasso em Branco */
-{espaco} {/*Ignore*/}
+/* Espacios en blanco */
+{espacio} {/*Ignore*/}
+
 
 /* Comentarios */
- "{}".*{/*Ignore*/}
+"{}".* {/*Ignore*/}
 
-/* Pular Linha */
-"\n" {return Linha;}
+/* Comillas */
+( "\"" ) {return new Symbol(sym.Comillas, yychar, yyline, yytext());}
 
 /* Tipos de dados */
-int  {return new Symbol (sym.Int, yychar, yyline, yytext());}
+( integer | real ) {return new Symbol(sym.T_dado, yychar, yyline, yytext());}
 
-integer  {lexeme=yytext(); return Integer;}
+/* Tipo de dato Int (Para el main) */
+( "int" ) {return new Symbol(sym.Int, yychar, yyline, yytext());}
 
-real  {lexeme=yytext(); return Real;}
-
-string  {lexeme=yytext(); return String;}
+/* Tipo de dato String */
+(string) {return new Symbol(sym.String, yychar, yyline, yytext());}
 
 /* Palavra reservada begin*/
-begin {lexeme=yytext(); return Begin;}
+(begin) {return new Symbol(sym.Begin, yychar, yyline, yytext());}
 
 /* Palavra reservada end*/
-end  {lexeme=yytext(); return End;}
+(end)  {return new Symbol(sym.End, yychar, yyline, yytext());}
 
 /* Palavra reservada nome*/
-Nome {lexeme=yytext(); return Nome;}
+(Nome) {return new Symbol(sym.Nome, yychar, yyline, yytext());}
 
 /* Palavra reservada If */
-if  {lexeme=yytext(); return If;}
+(if)  {return new Symbol(sym.If, yychar, yyline, yytext());}
 
 /* Palavra reservada then*/
-then {lexeme=yytext(); return Then;}
+(then) {return new Symbol(sym.Then, yychar, yyline, yytext());}
 
 /* Palavra  reservada Else */
-else {lexeme=yytext(); return Else;}
+(else) {return new Symbol(sym.Else, yychar, yyline, yytext());}
 
 /* Palavra  reservada While */
-while {lexeme=yytext(); return While;}
+(while) {return new Symbol(sym.While, yychar, yyline, yytext());}
 
 /* Palavra  reservada Do */
-do {lexeme=yytext(); return Do;}
+(do) {return new Symbol(sym.Do, yychar, yyline, yytext());}
 
 /* Palavra  reservada util */
-util {lexeme=yytext(); return Util;}
+(util) {return new Symbol(sym.Util, yychar, yyline, yytext());}
 
 /* Palavra  reservada repeat */
-repeat {lexeme=yytext(); return Repeat;}
+(repeat) {return new Symbol(sym.Repeat, yychar, yyline, yytext());}
 
 /* Palavra  reservada all */
-all {lexeme=yytext(); return All;}
+(all) {return new Symbol(sym.All, yychar, yyline, yytext());}
 
 /* Palavra  reservada and */
-and  {lexeme=yytext(); return And;}
+(and)  {return new Symbol(sym.And, yychar, yyline, yytext());}
 
 /* Palavra  reservada or*/
-or {lexeme=yytext(); return Or;}
+(or) {return new Symbol(sym.Or, yychar, yyline, yytext());}
 
 /* Palavra  reservada program */
-( program ) {lexeme=yytext(); return Program;}
+(program)  {return new Symbol(sym.Program, yychar, yyline, yytext());}
 
 /* Operador Igual */
-"=" {lexeme=yytext(); return Igual;}
+("=") {return new Symbol(sym.Igual, yychar, yyline, yytext());}
 
 /* Operador Soma */
-"+" {lexeme=yytext(); return Soma;}
+("+") {return new Symbol(sym.Soma, yychar, yyline, yytext());}
 
 /* Operador Resto */
-"-" {lexeme=yytext(); return Subtracao;}
+("-") {return new Symbol(sym.Subtracao, yychar, yyline, yytext());}
 
 /* Operador Multiplicacao */
-"*" {lexeme=yytext(); return Multiplica;}
+("*") {return new Symbol(sym.Multiplica, yychar, yyline, yytext());}
 
 /* Operador Divisao */
-"/" {lexeme=yytext(); return Divisao;}
+("/") {return new Symbol(sym.Divisao, yychar, yyline, yytext());}
 
 /* Operador Maior */
-">" {lexeme=yytext(); return Maior;}
+(">") {return new Symbol(sym.Maior, yychar, yyline, yytext());}
 
 /* Operador Menor */
-"<" {lexeme=yytext(); return Menor;}
+("<") {return new Symbol(sym.Menor, yychar, yyline, yytext());}
 
 /* Operador Maior Ingual */
-">=" {lexeme=yytext(); return Maior_Ingual;}
+(">=") {return new Symbol(sym.Maior_Ingual, yychar, yyline, yytext());}
 
 /* Operador Menor Ingual */
-"<=" {lexeme=yytext(); return Menor_Ingual;}
+("<=") {return new Symbol(sym.Menor_Ingual, yychar, yyline, yytext());}
 
 /* Operador Diferente */
-"<>" {lexeme=yytext(); return Diferente;}
-
+("<>") {return new Symbol(sym.Diferente, yychar, yyline, yytext());}
 
 /*Operadores Booleanos*/
-(or | and)      {lexeme = yytext(); return Op_booleano;}
+/*(or | and )  {return new Symbol(sym.Op_booleano, yychar, yyline, yytext());}*/
 
 /* Parentesis de abertura */
-"("  {lexeme=yytext(); return Parentesis_abertura;}
+("(")  {return new Symbol(sym.Parentesis_abertura, yychar, yyline, yytext());}
 
 /* Parentesis de fechar */
- ")"  {lexeme=yytext(); return Parentesis_fechar;}
+( ")")  {return new Symbol(sym.Parentesis_fechar, yychar, yyline, yytext());}
 
 /* ponto */
-("."  {lexeme=yytext(); return Ponto;}
+( "." )  {return new Symbol(sym.Ponto, yychar, yyline, yytext());}
 
 /* ponto y virgula */
-";"  {lexeme=yytext(); return P_virgula;}
+";"  {return new Symbol(sym.P_virgula, yychar, yyline, yytext());}
 
 /* ponto y Atribuicao */
-":="  {lexeme=yytext(); return Atribuicao;}
+( ":=" )  {return new Symbol(sym.Atribuicao, yychar, yyline, yytext());}
 
 /* Identificador */
-{L}({L}|{D})* {lexeme=yytext(); return Identificador;}
+{L}({L}|{D})* {return new Symbol(sym.Identificador, yychar, yyline, yytext());}
 
 /* Numero */
-("(-"{D}+")")|{D}+ {lexeme=yytext(); return Numero;}
+("(-"{D}+")")|{D}+ {return new Symbol(sym.Numero, yychar, yyline, yytext());}
 
 /* Error de analisis */
- . {return ERROR;}
+ . {return new Symbol(sym.ERROR, yychar, yyline, yytext());}

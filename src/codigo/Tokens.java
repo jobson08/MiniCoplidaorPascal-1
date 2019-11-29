@@ -9,9 +9,8 @@ package codigo;
  * @author jamme
  */
 public enum Tokens {
+    T_dado,
     Int,
-    Integer,
-    Real,
     String,
     Linha,
     Begin,
@@ -33,8 +32,7 @@ public enum Tokens {
     Subtracao,
     Multiplica,
     Divisao,
-    Op_relacionais,
-    Op_booleano,
+  /*  Op_booleano,*/
     Parentesis_abertura,
     Parentesis_fechar,
     Ponto,
