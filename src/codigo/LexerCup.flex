@@ -27,26 +27,20 @@ espacio=[ ,\t,\r,\n]+
 /* Comentarios */
 "{}".* {/*Ignore*/}
 
-/* Comillas */
-( "\"" ) {return new Symbol(sym.Comillas, yychar, yyline, yytext());}
-
-/* Tipos de dados */
-( integer | real ) {return new Symbol(sym.T_dado, yychar, yyline, yytext());}
-
 /* Tipo de dato Int (Para el main) */
 ( "int" ) {return new Symbol(sym.Int, yychar, yyline, yytext());}
 
-/* Tipo de dato String */
-(string) {return new Symbol(sym.String, yychar, yyline, yytext());}
+/* Tipos de dados */
+( Integer | Real ) {return new Symbol(sym.T_dado, yychar, yyline, yytext());}
+
+/* Palavra reservada String*/
+(String) {return new Symbol(sym.String, yychar, yyline, yytext());}
 
 /* Palavra reservada begin*/
-(begin) {return new Symbol(sym.Begin, yychar, yyline, yytext());}
+(Begin) {return new Symbol(sym.Begin, yychar, yyline, yytext());}
 
 /* Palavra reservada end*/
-(end)  {return new Symbol(sym.End, yychar, yyline, yytext());}
-
-/* Palavra reservada nome*/
-(Nome) {return new Symbol(sym.Nome, yychar, yyline, yytext());}
+(End)  {return new Symbol(sym.End, yychar, yyline, yytext());}
 
 /* Palavra reservada If */
 (if)  {return new Symbol(sym.If, yychar, yyline, yytext());}
@@ -79,7 +73,7 @@ espacio=[ ,\t,\r,\n]+
 (or) {return new Symbol(sym.Or, yychar, yyline, yytext());}
 
 /* Palavra  reservada program */
-(program)  {return new Symbol(sym.Program, yychar, yyline, yytext());}
+(Programa)  {return new Symbol(sym.Programa_inicio, yychar, yyline, yytext());}
 
 /* Operador Igual */
 ("=") {return new Symbol(sym.Igual, yychar, yyline, yytext());}
@@ -112,7 +106,7 @@ espacio=[ ,\t,\r,\n]+
 ("<>") {return new Symbol(sym.Diferente, yychar, yyline, yytext());}
 
 /*Operadores Booleanos*/
-/*(or | and )  {return new Symbol(sym.Op_booleano, yychar, yyline, yytext());}*/
+(true | false  )  {return new Symbol(sym.Op_booleano, yychar, yyline, yytext());}
 
 /* Parentesis de abertura */
 ("(")  {return new Symbol(sym.Parentesis_abertura, yychar, yyline, yytext());}
@@ -124,7 +118,7 @@ espacio=[ ,\t,\r,\n]+
 ( "." )  {return new Symbol(sym.Ponto, yychar, yyline, yytext());}
 
 /* ponto y virgula */
-";"  {return new Symbol(sym.P_virgula, yychar, yyline, yytext());}
+(";")  {return new Symbol(sym.P_virgula, yychar, yyline, yytext());}
 
 /* ponto y Atribuicao */
 ( ":=" )  {return new Symbol(sym.Atribuicao, yychar, yyline, yytext());}

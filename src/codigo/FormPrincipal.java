@@ -49,15 +49,18 @@ public class FormPrincipal extends javax.swing.JFrame {
                 case Linha:
                     cont++;
                     resultado += "Linha " + cont + "\n";
-                    break;            
+                    break;  
+                case T_dado:
+                    resultado += "  <Reservada Tipo Dados>\t" + lexer.lexeme + "\n";
+                    break; 
+                case String:
+                    resultado += "  <Reservada Tipo Dados>\t" + lexer.lexeme + "\n";
+                    break;        
                 case Begin:
                     resultado += "  <Reservada Begin>\t" + lexer.lexeme + "\n";
                     break;
                 case End:
                     resultado += "  <Reservada End>\t" + lexer.lexeme + "\n";
-                    break;
-                case Nome:
-                    resultado += "  <Reservada Nome>\t" + lexer.lexeme + "\n";
                     break;
                 case If:
                     resultado += "  <Reservada If>\t" + lexer.lexeme + "\n";
@@ -89,8 +92,8 @@ public class FormPrincipal extends javax.swing.JFrame {
                  case Or:
                     resultado += "  <Reservada Or>\t" + lexer.lexeme + "\n";
                     break;
-                 case Program:
-                    resultado += "  <Reservada Progran>\t" + lexer.lexeme + "\n";
+                 case Programa_inicio:
+                    resultado += "  <Reservada Programa>\t" + lexer.lexeme + "\n";
                     break;     
                 case Igual:
                     resultado += "  <Operador igual>\t" + lexer.lexeme + "\n";
@@ -122,9 +125,9 @@ public class FormPrincipal extends javax.swing.JFrame {
                 case Diferente:
                     resultado += "  <Diferente>\t" + lexer.lexeme + "\n";
                     break;    
-               /* case Op_booleano:
+                case Op_booleano:
                     resultado += "  <Operador booleano>\t" + lexer.lexeme + "\n";
-                    break;*/
+                    break;
                 case Parentesis_abertura:
                     resultado += "  <Parentesis de abertura>\t" + lexer.lexeme + "\n";
                     break;
@@ -133,7 +136,7 @@ public class FormPrincipal extends javax.swing.JFrame {
                     break;
                 case Ponto:
                     resultado += "  <Ponto>\t" + lexer.lexeme + "\n";
-                    break;
+                    break;             
                 case P_virgula:
                     resultado += "  <Ponto e virgula>\t" + lexer.lexeme + "\n";
                     break;
@@ -232,7 +235,7 @@ public class FormPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BtnArquivo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -251,16 +254,16 @@ public class FormPrincipal extends javax.swing.JFrame {
                     .addComponent(BtnArquivo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
                     .addComponent(jScrollPane1))
-                .addGap(53, 53, 53))
+                .addGap(70, 70, 70))
         );
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 204));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         TxtResutSintatico.setColumns(20);
-        TxtResutSintatico.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        TxtResutSintatico.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         TxtResutSintatico.setRows(5);
         jScrollPane3.setViewportView(TxtResutSintatico);
 
@@ -302,8 +305,8 @@ public class FormPrincipal extends javax.swing.JFrame {
                     .addComponent(BtnLimparSintatico, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BtnAnalizarSintatico, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -315,30 +318,30 @@ public class FormPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addGap(298, 298, 298))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(16, 16, 16))))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(16, 16, 16))
             .addGroup(layout.createSequentialGroup()
                 .addGap(317, 317, 317)
                 .addComponent(jLabel1)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(295, 295, 295))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -348,6 +351,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 
     private void BtnLimparLexicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLimparLexicoActionPerformed
         // TODO add your handling code here:
+        TxtResutLexico.setText(null);   
     }//GEN-LAST:event_BtnLimparLexicoActionPerformed
 
     private void BtnArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnArquivoActionPerformed
@@ -377,6 +381,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 
     private void BtnLimparSintaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLimparSintaticoActionPerformed
         // TODO add your handling code here:
+        TxtResutSintatico.setText(null);
     }//GEN-LAST:event_BtnLimparSintaticoActionPerformed
 
     private void BtnAnalizarSintaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAnalizarSintaticoActionPerformed

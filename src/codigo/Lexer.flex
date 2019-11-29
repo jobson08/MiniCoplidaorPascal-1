@@ -20,21 +20,19 @@ espaco=[ ,\t,\r]+
 /* Pular Linha */
 "\n" {return Linha;}
 
-/* Tipos de dados */
-( integer | real ) {lexeme=yytext(); return  T_dado;}
-
 int  {lexeme=yytext(); return Int;}
 
-string  {lexeme=yytext(); return String;}
+/* Tipos de dados */
+( Integer  | Real ) {lexeme=yytext(); return T_dado;}
+
+/* Tipos de dados String*/
+String {lexeme=yytext(); return String;}
 
 /* Palavra reservada begin*/
-begin {lexeme=yytext(); return Begin;}
+Begin {lexeme=yytext(); return Begin;}
 
 /* Palavra reservada end*/
-end  {lexeme=yytext(); return End;}
-
-/* Palavra reservada nome*/
-Nome {lexeme=yytext(); return Nome;}
+End  {lexeme=yytext(); return End;}
 
 /* Palavra reservada If */
 if  {lexeme=yytext(); return If;}
@@ -67,7 +65,7 @@ and  {lexeme=yytext(); return And;}
 or {lexeme=yytext(); return Or;}
 
 /* Palavra  reservada program */
-program  {lexeme=yytext(); return Program;}
+Programa  {lexeme=yytext(); return Programa_inicio;}
 
 /* Operador Igual */
 "=" {lexeme=yytext(); return Igual;}
@@ -100,7 +98,7 @@ program  {lexeme=yytext(); return Program;}
 "<>" {lexeme=yytext(); return Diferente;}
 
 /*Operadores Booleanos*/
-/*(or | and ) {lexeme=yytext(); return Op_booleano;}*/
+(true | false ) {lexeme=yytext(); return Op_booleano;}
 
 /* Parentesis de abertura */
 "("  {lexeme=yytext(); return Parentesis_abertura;}

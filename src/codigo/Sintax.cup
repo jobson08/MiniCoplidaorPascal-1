@@ -15,17 +15,24 @@ parser code
 }
 :};
 
-terminal   T_dado, Int, Integer, Real, String, Linha, Begin, End, Nome, If, Then, Else, While,Do, Util,
-    Repeat, All, And, Or, Program, Igual, Soma, Subtracao, Multiplica, Divisao, Op_relacionais,
-    Op_booleano, Parentesis_abertura, Parentesis_fechar, Ponto, P_virgula, Atribuicao, Maior, Menor, Menor_Ingual,
-    Maior_Ingual, Diferente, Comillas, Identificador, Numero, ERROR;
+terminal   T_dado, String, Int, Integer, Real, Linha, Begin, End, If, Then, Else, While,Do, Util,
+    Repeat, All, And, Or, Programa_inicio, Igual, Soma, Subtracao, Multiplica, Divisao, Op_relacionais,
+    Op_booleano, Parentesis_abertura, Parentesis_fechar, Ponto, Virgula, P_virgula, Atribuicao, Maior, Menor, Menor_Ingual,
+    Maior_Ingual, Diferente, Identificador, Numero, ERROR;
 
-non terminal INICIO, SENTENCIA, DECLARACION;
+non terminal INICIO, BLOCO_PRINCIPAL, BLOCO, DECLARACAO_VAR, COMANDO, TIPO ;
 
 start with INICIO;
 
-INICIO ::= Program Identificador P_virgula Begin SENTENCIA End P_virgula |
-    Begin SENTENCIA End P_virgula
+INICIO ::= BLOCO_PRINCIPAL 
 ;
-SENTENCIA ::= T_dado Atribuicao Identificador P_virgula | T_dado Identificador Atribuicao Numero P_virgula
+
+BLOCO_PRINCIPAL ::= Programa_inicio Identificador P_virgula DECLARACAO_VAR Begin BLOCO End Ponto
 ;
+BLOCO ::= Begin  End P_virgula
+;
+
+DECLARACAO_VAR ::= String Identificador P_virgula | 
+T_dado Identificador Atribuicao Atribuicao Numero P_virgula
+;
+
